@@ -1,0 +1,103 @@
+# Action DETR
+
+DDP_CONFIG:
+  WORLD_SIZE: 1
+  WORLD_RANK: 0
+  GPU_WORLD_SIZE: 8
+  GPU_WORLD_RANK: 0
+  DIST_URL: 'tcp://xxx.xxx.xxx.xxx:xxxx'
+  WOLRD_URLS: ['xxx.xxx.xxx.xxx']
+  AUTO_RANK_MATCH: True
+  DIST_BACKEND: 'nccl'
+  GPU: 0
+  DISTRIBUTED: True
+
+CONFIG:
+  EVAL_ONLY: True
+  TWO_STREAM: False
+  USE_LFB: False
+  USE_LOCATION: False
+  TRAIN:
+    EPOCH_NUM: 20
+    BATCH_SIZE: 2
+    LR: 1e-4
+    MIN_LR: 1e-5
+    LR_BACKBONE: 1e-5
+    MOMENTUM: 0.9
+    W_DECAY: 1e-4
+    LR_POLICY: 'step'
+    USE_WARMUP: True
+    WARMUP_START_LR: 1e-5
+    WARMUP_EPOCHS: 4
+    LR_MILESTONE: [10, 15]
+    STEP: 0.1
+    OPTIMIZER:
+      NAME: SGD
+    AUX_LOSS: True
+
+  VAL:
+    BATCH_SIZE: 1
+    FREQ: 2
+
+  DATA:
+    DATASET_NAME: 'jhmdb'
+    ANNO_PATH: '/xxx/jhmdb/JHMDB'
+    DATA_PATH: '/xxx/jhmdb/JHMDB/Frames'
+    NUM_CLASSES: 21
+    MULTIGRID: False
+    IMG_SIZE: 224
+    IMG_RESHAPE_SIZE: 256
+    TEMP_LEN: 32
+    FRAME_RATE: 2
+
+  MODEL:
+    SINGLE_FRAME: True
+    BACKBONE_NAME: CSN-152
+    TEMPORAL_DS_STRATEGY: decoder
+    LAST_STRIDE: False
+    GENERATE_LFB: False
+    NAME: 'jhmdb_detr_9_224'
+    ENC_LAYERS: 6
+    DEC_LAYERS: 6
+    D_MODEL: 256
+    NHEAD: 8
+    NUM_ENCODER_LAYERS: 12
+    DIM_FEEDFORWARD: 2048
+    QUERY_NUM: 10
+    NORMALIZE_BEFORE: False
+    DROPOUT: 0.1
+    DS_RATE: 8
+    TEMP_LEN: 32
+    SAMPLE_RATE: 2
+    PRETRAINED: False
+    PRETRAIN_BACKBONE_DIR: "xxx"
+    PRETRAIN_TRANSFORMER_DIR: "xxx"
+    PRETRAINED_PATH: "/xxx/ADTR_CSN_152_jhmdb.pth"
+    LOAD: True
+    LOAD_FC: True
+
+  MATCHER:
+    COST_CLASS: 1
+    COST_BBOX: 5
+    COST_GIOU: 2
+    BNY_LOSS: False
+    BEFORE: False
+
+  LOSS_COFS:
+    MASK_COF: 1
+    DICE_COF: 1
+    BBOX_COF: 5
+    GIOU_COF: 2
+    EOS_COF: 0.1
+    WEIGHT: 10
+    WEIGHT_CHANGE: 1000
+    LOSS_CHANGE_COF: 2
+    CLIPS_MAX_NORM: 0.1
+
+  LOG:
+    BASE_PATH: '/xxx/JHBDM_Tuber'
+    LOG_DIR: 'tb_log'
+    SAVE_DIR: 'checkpoints'
+    EVAL_DIR: '/xxx/JHBDM_Tuber/eval'
+    SAVE_FREQ: 1
+    RES_DIR: 'tmp_jhmdb'
