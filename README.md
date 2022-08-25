@@ -43,9 +43,11 @@ The project is tested working on:
 - tensorboardX
 
 ### Dataset
+Please download the [asset.zip](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/assets.zip) and unzip them at ./datasets.
 
+[AVA]
 Please refer to [DATASET.md](https://github.com/facebookresearch/SlowFast/blob/main/slowfast/datasets/DATASET.md) for AVA dataset downloading and pre-processing.
-
+[JHMDB]
 Please refer to [JHMDB](http://jhmdb.is.tue.mpg.de/) for JHMDB dataset and [Dataset Section](https://github.com/gurkirt/realtime-action-detection#datasets) for UCF dataset. You also can refer to [ACT-Detector](https://github.com/vkalogeiton/caffe/tree/act-detector) to prepare the two datasets.
 
 ### Inference
@@ -57,7 +59,7 @@ To run inference, first modify the config file:
 
 Then run:
 ```
-# run testing testing
+# run testing
 python3  eval_tuber_ava.py <CONFIG_FILE> 
 
 # for example, to evaluate ava from scratch, run:

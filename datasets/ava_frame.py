@@ -240,7 +240,6 @@ def make_image_key(video_id, timestamp):
 
 
 def build_dataloader(cfg):
-    # 179200
     train_bbox_json = json.load(open(cfg.CONFIG.DATA.ANNO_PATH.format("train")))
     train_video_frame_bbox, train_frame_keys_list = train_bbox_json["video_frame_bbox"], train_bbox_json["frame_keys_list"]
 

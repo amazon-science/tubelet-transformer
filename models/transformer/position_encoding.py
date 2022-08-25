@@ -1,6 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 """
-Various positional encodings for the transformer.
+The code refers to https://github.com/facebookresearch/detr
+Modified by Zhang Yanyi
 """
 import math
 import torch
