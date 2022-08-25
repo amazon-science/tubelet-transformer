@@ -1,3 +1,8 @@
+"""
+The code refers to https://github.com/facebookresearch/detr
+Modified by Zhang Yanyi
+"""
+
 import copy
 from typing import Optional, List
 

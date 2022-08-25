@@ -1,3 +1,10 @@
+'''
+CSN-50
+The code refers to https://github.com/dmlc/gluon-cv
+Modified by Zhang Yanyi
+'''
+
+
 import torch
 import torch.nn as nn
 
