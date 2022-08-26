@@ -12,9 +12,9 @@ This repo contains the supported code to reproduce spatio-temporal action detect
 
 | Backbone | Pretrain |  #view | mAP  |  FLOPs | config |  model |
 | :---: | :---: |  :---: |:----:| :---: | :---: | :---: |
-| CSN-50 | Kinetics-400 | 1 view | 27.2 |  78G | [config](configuration/TubeR_CSN50_AVA21.yaml) |  [S3]([TBD](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN50_AVA21.pth)) |
+| CSN-50 | Kinetics-400 | 1 view | 27.2 |  78G | [config](configuration/TubeR_CSN50_AVA21.yaml) |  [S3](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN50_AVA21.pth) |
 | CSN-50 (with long-term context) | Kinetics-400 | 1 view | 28.8 |  78G | [config](TBD) |  Comming soon |
-| CSN-152 | Kinetics-400+IG65M | 1 view | 29.7 |  120G | [config](configuration/TubeR_CSN152_AVA21.yaml) |  [S3]([TBD](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN152_AVA21.pth)) |
+| CSN-152 | Kinetics-400+IG65M | 1 view | 29.7 |  120G | [config](configuration/TubeR_CSN152_AVA21.yaml) |  [S3](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN152_AVA21.pth) |
 | CSN-152 (with long-term context) | Kinetics-400+IG65M | 1 view | 31.7 |  120G | [config](TBD) |  Comming soon |
 
 
@@ -22,13 +22,13 @@ This repo contains the supported code to reproduce spatio-temporal action detect
 
 | Backbone | Pretrain |  #view | mAP  |  FLOPs | config |  model |
 | :---: | :---: |  :---: |:----:| :---: | :---: | :---: |
-| CSN-152 | Kinetics-400+IG65M | 1 view | 31.1 |  120G | [config](configuration/TubeR_CSN152_AVA22.yaml) |  [S3]([TBD](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN152_AVA22.pth)) |
+| CSN-152 | Kinetics-400+IG65M | 1 view | 31.1 |  120G | [config](configuration/TubeR_CSN152_AVA22.yaml) |  [S3](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN152_AVA22.pth) |
 | CSN-152 (with long-term context) | Kinetics-400+IG65M | 1 view | 33.4 |  120G | [config](TBD) |  Comming soon |
 
 ### JHMDB Dataset
 | Backbone |  #view | mAP@0.2 |  mAP@0.5 | config |  model |
 | :---: |  :---: | :---: | :---: | :---: | :---: |
-| CSN-152  | 1 view | 87.4 |  82.3 | [config](configuration/Tuber_CSN152_JHMDB.yaml) |  [S3]([TBD](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN152_JHMDB.pth)) |
+| CSN-152  | 1 view | 87.4 |  82.3 | [config](configuration/Tuber_CSN152_JHMDB.yaml) |  [S3](https://yzaws-data-log.s3.amazonaws.com/shared/TubeR_cvpr22/TubeR_CSN152_JHMDB.pth) |
 
 
 
