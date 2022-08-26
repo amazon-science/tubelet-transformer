@@ -85,7 +85,7 @@ python3 train_tuber_ava.py configuration/TubeR_CSN152_AVA21.yaml
 ## TODO
 [ ]Add tutorial and pre-trained weights for TubeR with long-term memory
 
-[ ] Add add weights for UCF24
+[ ]Add weights for UCF24
 
 
 ## Citing TubeR
