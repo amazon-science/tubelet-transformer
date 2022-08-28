@@ -42,6 +42,7 @@ CONFIG:
     LABEL_PATH: '/xxx/datasets/ava_action_list_v2.1_for_activitynet_2018.pbtxt'
     ANNO_PATH: '/xxx/datasets/ava_{}_v21.json'
     DATA_PATH: '/xxx/ava/frames/{}/'
+    EXCLUDE_PATH: '/xxx/datasets/ava_val_excluded_timestamps_v2.1.csv'
     NUM_CLASSES: 80
     MULTIGRID: False
     IMG_SIZE: 256
@@ -68,7 +69,7 @@ CONFIG:
     DS_RATE: 8
     TEMP_LEN: 32
     SAMPLE_RATE: 2
-    PRETRAINED: False
+    PRETRAINED: True
     PRETRAIN_BACKBONE_DIR: "/xxx/irCSN_152_ft_kinetics_from_ig65m_f126851907.mat"
     PRETRAIN_TRANSFORMER_DIR: "/xxx/detr.pth"
     PRETRAINED_PATH: "/xxx/ADTR_CSN_152_ava_21.pth"

@@ -57,8 +57,9 @@ def deploy_model(model, cfg, is_tuber=True):
         # DataParallel will divide and allocate batch_size to all available GPUs
         model = torch.nn.DataParallel(model).cuda()
 
-    print("loading detr")
-    load_detr_weights(model, cfg.CONFIG.MODEL.PRETRAIN_TRANSFORMER_DIR, cfg)
+    if cfg.CONFIG.MODEL.PRETRAINED:
+        print("loading detr")
+        load_detr_weights(model, cfg.CONFIG.MODEL.PRETRAIN_TRANSFORMER_DIR, cfg)
 
     return model
 

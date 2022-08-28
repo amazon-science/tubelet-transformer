@@ -27,11 +27,11 @@ class STDetectionEvaluater(object):
         evaluate(): run evaluation code
     '''
 
-    def __init__(self, label_path, tiou_thresholds=[0.5], load_from_dataset=False, class_num=60):
+    def __init__(self, label_path, exclude_path=None, tiou_thresholds=[0.5], load_from_dataset=False, class_num=60):
         self.label_path = label_path
         categories, class_whitelist = read_labelmap(self.label_path)
         self.class_num = class_num
-        if class_num == 80:
+        if class_num == 80 and exclude_path is not None:
             self.exclude_keys = []
             f = open("/xxx/datasets/ava_val_excluded_timestamps_v2.1.csv")
             while True:
