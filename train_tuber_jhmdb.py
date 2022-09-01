@@ -78,7 +78,6 @@ def main_worker(cfg):
     for epoch in range(cfg.CONFIG.TRAIN.START_EPOCH, cfg.CONFIG.TRAIN.EPOCH_NUM):
         if cfg.DDP_CONFIG.DISTRIBUTED:
             train_sampler.set_epoch(epoch)
-        time.sleep(1000)
         train_tuber_detection(cfg, model, criterion, train_loader, optimizer, epoch, cfg.CONFIG.LOSS_COFS.CLIPS_MAX_NORM, lr_scheduler, writer)
         validate_tuber_ucf_detection(cfg, model, criterion, postprocessors, val_loader, 0, writer)
 
