@@ -20,9 +20,10 @@ def load_detr_weights(model, pretrain_dir, cfg):
         elif k.split('.')[1] == 'query_embed':
             if not cfg.CONFIG.MODEL.SINGLE_FRAME:
                 query_size = cfg.CONFIG.MODEL.QUERY_NUM * (cfg.CONFIG.MODEL.TEMP_LEN // cfg.CONFIG.MODEL.DS_RATE)
+                pretrained_dict.update({k: v[:query_size].repeat(cfg.CONFIG.MODEL.DS_RATE, 1)})
             else:
                 query_size = cfg.CONFIG.MODEL.QUERY_NUM
-            pretrained_dict.update({k: v[:query_size]})
+                pretrained_dict.update({k: v[:query_size]})
 
     pretrained_dict_ = {k: v for k, v in pretrained_dict.items() if k in model_dict}
     unused_dict = {k: v for k, v in pretrained_dict.items() if not k in model_dict}
