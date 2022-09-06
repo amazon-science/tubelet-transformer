@@ -20,9 +20,10 @@ def load_detr_weights(model, pretrain_dir, cfg):
         elif k.split('.')[1] == 'query_embed':
             if not cfg.CONFIG.MODEL.SINGLE_FRAME:
                 query_size = cfg.CONFIG.MODEL.QUERY_NUM * (cfg.CONFIG.MODEL.TEMP_LEN // cfg.CONFIG.MODEL.DS_RATE)
+                pretrained_dict.update({k: v[:query_size].repeat(cfg.CONFIG.MODEL.DS_RATE, 1)})
             else:
                 query_size = cfg.CONFIG.MODEL.QUERY_NUM
-            pretrained_dict.update({k: v[:query_size]})
+                pretrained_dict.update({k: v[:query_size]})
 
     pretrained_dict_ = {k: v for k, v in pretrained_dict.items() if k in model_dict}
     unused_dict = {k: v for k, v in pretrained_dict.items() if not k in model_dict}
@@ -57,8 +58,9 @@ def deploy_model(model, cfg, is_tuber=True):
         # DataParallel will divide and allocate batch_size to all available GPUs
         model = torch.nn.DataParallel(model).cuda()
 
-    print("loading detr")
-    load_detr_weights(model, cfg.CONFIG.MODEL.PRETRAIN_TRANSFORMER_DIR, cfg)
+    if cfg.CONFIG.MODEL.PRETRAINED:
+        print("loading detr")
+        load_detr_weights(model, cfg.CONFIG.MODEL.PRETRAIN_TRANSFORMER_DIR, cfg)
 
     return model
 

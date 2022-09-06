@@ -426,7 +426,7 @@ def validate_tuber_detection(cfg, model, criterion, postprocessors, data_loader,
     # aggregate files
     if cfg.DDP_CONFIG.GPU_WORLD_RANK == 0:
         # read results
-        evaluater = STDetectionEvaluater(cfg.CONFIG.DATA.LABEL_PATH, class_num=cfg.CONFIG.DATA.NUM_CLASSES)
+        evaluater = STDetectionEvaluater(cfg.CONFIG.DATA.LABEL_PATH, class_num=cfg.CONFIG.DATA.NUM_CLASSES, exclude_path=cfg.CONFIG.DATA.EXCLUDE_PATH)
         file_path_lst = [tmp_GT_path.format(cfg.CONFIG.LOG.BASE_PATH, cfg.CONFIG.LOG.RES_DIR, x) for x in range(cfg.DDP_CONFIG.GPU_WORLD_SIZE)]
         evaluater.load_GT_from_path(file_path_lst)
         file_path_lst = [tmp_path.format(cfg.CONFIG.LOG.BASE_PATH, cfg.CONFIG.LOG.RES_DIR, x) for x in range(cfg.DDP_CONFIG.GPU_WORLD_SIZE)]
@@ -562,7 +562,7 @@ def validate_tuber_ucf_detection(cfg, model, criterion, postprocessors, data_loa
                 buff_binary.append(output_b[..., 0])
 
             val_label = targets[bidx]["labels"]
-            val_category = torch.full((len(val_label), 21), 0)
+            val_category = torch.full((len(val_label), cfg.CONFIG.DATA.NUM_CLASSES), 0)
             for vl in range(len(val_label)):
                 label = int(val_label[vl])
                 val_category[vl, label] = 1
@@ -675,15 +675,5 @@ def validate_tuber_ucf_detection(cfg, model, criterion, postprocessors, data_loa
         writer.add_scalar('val/val_mAP_epoch', mAP[0], epoch)
         Map_ = mAP[0]
 
-        # evaluater = STDetectionEvaluaterSinglePerson(cfg.CONFIG.DATA.LABEL_PATH)
-        # file_path_lst = [tmp_GT_path.format(cfg.CONFIG.LOG.BASE_PATH, cfg.CONFIG.LOG.RES_DIR, x) for x in range(cfg.DDP_CONFIG.GPU_WORLD_SIZE)]
-        # evaluater.load_GT_from_path(file_path_lst)
-        # file_path_lst = [tmp_path.format(cfg.CONFIG.LOG.BASE_PATH, cfg.CONFIG.LOG.RES_DIR, x) for x in range(cfg.DDP_CONFIG.GPU_WORLD_SIZE)]
-        # evaluater.load_detection_from_path(file_path_lst)
-        # mAP, metrics = evaluater.evaluate()
-        # print(metrics)
-        # print_string = 'person AP: {mAP:.5f}'.format(mAP=mAP[0])
-        # print(print_string)
-        # writer.add_scalar('val/val_person_AP_epoch', mAP[0], epoch)
     torch.distributed.barrier()
     return Map_
