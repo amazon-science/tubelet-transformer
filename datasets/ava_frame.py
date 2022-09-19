@@ -131,7 +131,7 @@ class VideoDataset(data.Dataset):
         return target
 
     def loadvideo(self, start_img, vid, frame_key):
-        video_frame_path = self.frame_path
+        video_frame_path = self.frame_path.format(vid)
         video_frame_list = sorted(glob(video_frame_path + '/*.jpg'))
 
         if len(video_frame_list) == 0:
