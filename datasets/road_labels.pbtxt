@@ -1,0 +1,164 @@
+item {
+  name: "Ped"
+  id: 1
+}
+item {
+  name: "Car"
+  id: 2
+}
+item {
+  name: "Cyc"
+  id: 3
+}
+item {
+  name: "Mobike"
+  id: 4
+}
+item {
+  name: "MedVeh"
+  id: 5
+}
+item {
+  name: "LarVeh"
+  id: 6
+}
+item {
+  name: "Bus"
+  id: 7
+}
+item {
+  name: "EmVeh"
+  id: 8
+}
+item {
+  name: "TL"
+  id: 9
+}
+item {
+  name: "OthTL"
+  id: 10
+}
+item {
+  name: "Red"
+  id: 11
+}
+item {
+  name: "Amber"
+  id: 12
+}
+item {
+  name: "Green"
+  id: 13
+}
+item {
+  name: "MovAway"
+  id: 14
+}
+item {
+  name: "MovTow"
+  id: 15
+}
+item {
+  name: "Mov"
+  id: 16
+}
+item {
+  name: "Brake"
+  id: 17
+}
+item {
+  name: "Stop"
+  id: 18
+}
+item {
+  name: "IncatLft"
+  id: 19
+}
+item {
+  name: "IncatRht"
+  id: 20
+}
+item {
+  name: "HazLit"
+  id: 21
+}
+item {
+  name: "TurLft"
+  id: 22
+}
+item {
+  name: "TurRht"
+  id: 23
+}
+item {
+  name: "Ovtak"
+  id: 24
+}
+item {
+  name: "Wait2X"
+  id: 25
+}
+item {
+  name: "XingFmLft"
+  id: 26
+}
+item {
+  name: "XingFmRht"
+  id: 27
+}
+item {
+  name: "Xing"
+  id: 28
+}
+item {
+  name: "PushObj"
+  id: 29
+}
+item {
+  name: "VehLane"
+  id: 30
+}
+item {
+  name: "OutgoLane"
+  id: 31
+}
+item {
+  name: "OutgoCycLane"
+  id: 32
+}
+item {
+  name: "IncomLane"
+  id: 33
+}
+item {
+  name: "IncomCycLane"
+  id: 34
+}
+item {
+  name: "Pav"
+  id: 35
+}
+item {
+  name: "LftPav"
+  id: 36
+}
+item {
+  name: "RhtPav"
+  id: 37
+}
+item {
+  name: "Jun"
+  id: 38
+}
+item {
+  name: "xing"
+  id: 39
+}
+item {
+  name: "BusStop"
+  id: 40
+}
+item {
+  name: "parking"
+  id: 41
+}

@@ -33,7 +33,7 @@ class STDetectionEvaluater(object):
         self.class_num = class_num
         if class_num == 80:
             self.exclude_keys = []
-            f = open("/xxx/datasets/ava_val_excluded_timestamps_v2.1.csv")
+            f = open("datasets/assets/ava_val_excluded_timestamps_v2.1.csv")
             while True:
                 line = f.readline().strip()
                 if not line: break

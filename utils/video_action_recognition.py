@@ -92,14 +92,16 @@ def train_tuber_detection(cfg, model, criterion, data_loader, optimizer, epoch, 
     # metric_logger.add_meter('class_error', utils.SmoothedValue(window_size=1, fmt='{value:.2f}'))
     header = 'Epoch: [{}]'.format(epoch)
     print_freq = 10
-
+    skip_iter = False
     for idx, data in enumerate(data_loader):
-
+        
         data_time.update(time.time() - end)
 
         # for samples, targets in metric_logger.log_every(data_loader, print_freq, epoch, ddp_params, writer, header):
         device = "cuda:" + str(cfg.DDP_CONFIG.GPU)
         samples = data[0]
+
+
         if cfg.CONFIG.TWO_STREAM:
             samples2 = data[1]
             targets = data[2]
@@ -116,10 +118,23 @@ def train_tuber_detection(cfg, model, criterion, data_loader, optimizer, epoch, 
             else:
                 lfb_features = data[-1]
                 lfb_features = lfb_features.to(device)
+        
+        
+
+        # for target in targets:
+        #     if len(target['boxes']) == 0:
+        #         skip_iter = True
+        #         break
+        # if skip_iter:
+        #     print("skip iteration ...")
+        #     skip_iter=False
+        #     continue
+    
         for t in targets: del t["image_id"]
 
         samples = samples.to(device)
         targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
+        
 
         if cfg.CONFIG.TWO_STREAM:
             if cfg.CONFIG.USE_LFB:
@@ -190,7 +205,8 @@ def train_tuber_detection(cfg, model, criterion, data_loader, optimizer, epoch, 
             class_err.update(loss_dict_reduced['class_error'], len(targets))
 
             if cfg.CONFIG.MATCHER.BNY_LOSS:
-                losses_ce_b.update(loss_dict_reduced['loss_ce_b'].item(), len(targets))
+                losses_ce_b.update(loss_dict_reduced['loss_ce_b'].item(), len(targets))   
+
 
             if not math.isfinite(loss_value):
                 print("Loss is {}, stopping training".format(loss_value))

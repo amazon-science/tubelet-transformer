@@ -1,0 +1,11 @@
+cache/*
+*.txt
+datasets/assets/*
+pretrained_weights/*
+
+*.pyc
+
+cache/*
+cache_ROAD/*
+
+
