@@ -94,7 +94,9 @@ def train_tuber_detection(cfg, model, criterion, data_loader, optimizer, epoch, 
     print_freq = 10
     skip_iter = False
     for idx, data in enumerate(data_loader):
-        
+        # if idx > 10:
+        #     break
+
         data_time.update(time.time() - end)
 
         # for samples, targets in metric_logger.log_every(data_loader, print_freq, epoch, ddp_params, writer, header):
@@ -270,6 +272,8 @@ def validate_tuber_detection(cfg, model, criterion, postprocessors, data_loader,
         print("all tmp files removed")
 
     for idx, data in enumerate(data_loader):
+        # if idx > 10:
+        #     break
         data_time.update(time.time() - end)
 
         # for samples, targets in metric_logger.log_every(data_loader, print_freq, epoch, ddp_params, writer, header):
@@ -317,6 +321,11 @@ def validate_tuber_detection(cfg, model, criterion, postprocessors, data_loader,
                     outputs = model(samples, lfb_features)
             else:
                 outputs = model(samples)
+
+        # print(outputs)
+        # print(targets)
+        # print(rr)
+
 
         loss_dict = criterion(outputs, targets)
 

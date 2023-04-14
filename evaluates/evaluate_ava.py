@@ -29,8 +29,15 @@ class STDetectionEvaluater(object):
 
     def __init__(self, label_path, tiou_thresholds=[0.5], load_from_dataset=False, class_num=60):
         self.label_path = label_path
+        # print('lab_path', self.label_path)
         categories, class_whitelist = read_labelmap(self.label_path)
+        # print('categories', categories)
+        # print('class_whitelist', class_whitelist)
+        
         self.class_num = class_num
+        # print('self.class_num', self.class_num)
+        
+
         if class_num == 80:
             self.exclude_keys = []
             f = open("datasets/assets/ava_val_excluded_timestamps_v2.1.csv")

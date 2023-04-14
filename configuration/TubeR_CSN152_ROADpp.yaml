@@ -3,8 +3,8 @@ DDP_CONFIG:
   WORLD_RANK: 0
   GPU_WORLD_SIZE: 4
   GPU_WORLD_RANK: 0
-  DIST_URL: 'tcp://161.73.173.217:23457'
-  WOLRD_URLS: ['161.73.173.217']
+  DIST_URL: 'tcp://161.73.173.213:23457'
+  WOLRD_URLS: ['161.73.173.213']
   AUTO_RANK_MATCH: False
   DIST_BACKEND: 'nccl'
   GPU: 4
@@ -43,7 +43,7 @@ CONFIG:
     DATASET_NAME: 'ava'
     TRAIN_SUBSETS: [train]
     VAL_SUBSETS: [val]
-    SEQ_LEN: 12
+    SEQ_LEN: 10
     MIN_SEQ_STEP: 1
     MAX_SEQ_STEP: 1
     DATA_ROOT: '../'
@@ -52,15 +52,15 @@ CONFIG:
     skip_step: 1
 
     # DATASET_NAME: 'ava'
-    LABEL_PATH: 'datasets/roadpp_labels.pbtxt'
+    LABEL_PATH: 'datasets/roadpp.pbtxt'
     # ANNO_PATH: 'datasets/assets/ava_{}_v22.json'
     # DATA_PATH: '/mnt/pluto-gamma/salman/ROAD/Datasets/ava_download/frames/{}/'
     NUM_CLASSES: 43
     MULTIGRID: False
     IMG_SIZE: 680
     IMG_RESHAPE_SIZE: 512
-    TEMP_LEN: 12
-    FRAME_RATE: 2
+    TEMP_LEN: 10
+    FRAME_RATE: 10
 
 
   MODEL:
@@ -85,7 +85,8 @@ CONFIG:
     PRETRAINED: True
     PRETRAIN_BACKBONE_DIR: "pretrained_weights/irCSN_152_ft_kinetics_from_ig65m_f126851907.mat"
     PRETRAIN_TRANSFORMER_DIR: "pretrained_weights/detr.pth"
-    PRETRAINED_PATH: "pretrained_weights/_TubeR_CSN152_AVA22.pth"
+    PRETRAINED_PATH: "-.pth"
+    # PRETRAINED_PATH: "cache_ROADpp/roadpp_Tuber/2023-04-08-23-36-21/checkpoints/ckpt_epoch_6.pth"
     LOAD: True
     LOAD_FC: True
 

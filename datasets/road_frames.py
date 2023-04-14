@@ -865,7 +865,7 @@ class VideoDataset(tutils.data.Dataset):
                             list_box_labels.append(filtered_ids)
                             for fid in filtered_ids:
                                 box_labels[fid+cc-1] = 1
-                                box_labels[0] = 1
+                                # box_labels[0] = 1
                             cc += self.num_classes_list[idx+1]
 
                         all_labels.append(box_labels)
@@ -1152,6 +1152,10 @@ class VideoDataset(tutils.data.Dataset):
         target["labels"] = classes
         self.index_cnt = self.index_cnt + 1
 
+        # print('img',imgs.shape)
+        # print('tar',target)
+        # print('tar shape',target.shape)
+        # print(rr)
 
         return imgs, target
 

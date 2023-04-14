@@ -1,172 +1,172 @@
 item {
-name: "Ped"
-id: 1
+    name: "Ped"
+    id: 1
 }
 item {
-name: "Car"
-id: 2
+    name: "Car"
+    id: 2
 }
 item {
-name: "Mobike"
-id: 3
+    name: "Mobike"
+    id: 3
 }
 item {
-name: "SmalVeh"
-id: 4
+    name: "SmalVeh"
+    id: 4
 }
 item {
-name: "MedVeh"
-id: 5
+    name: "MedVeh"
+    id: 5
 }
 item {
-name: "LarVeh"
-id: 6
+    name: "LarVeh"
+    id: 6
 }
 item {
-name: "Bus"
-id: 7
+    name: "Bus"
+    id: 7   
 }
 item {
-name: "EmVeh"
-id: 8
+    name: "EmVeh"
+    id: 8   
 }
 item {
-name: "MovAway"
-id: 9
+    name: "MovAway"
+    id: 9
 }
 item {
-name: "MovTow"
-id: 10
+    name: "MovTow"
+    id: 10  
 }
 item {
-name: "Mov"
-id: 11
+    name: "Mov"
+    id: 11
 }
 item {
-name: "Rev"
-id: 12
+    name: "Rev"
+    id: 12
 }
 item {
-name: "Brake"
-id: 13
+    name: "Brake"
+    id: 13
 }
 item {
-name: "Stop"
-id: 14
+    name: "Stop"
+    id: 14
 }
 item {
-name: "IncatLft"
-id: 15
+    name: "IncatLft"
+    id: 15
 }
 item {
-name: "IncatRht"
-id: 16
+    name: "IncatRht"
+    id: 16
 }
 item {
-name: "HazLit"
-id: 17
+    name: "HazLit"
+    id: 17
 }
 item {
-name: "TurLft"
-id: 18
+    name: "TurLft"
+    id: 18
 }
 item {
-name: "TurRht"
-id: 19
+    name: "TurRht"
+    id: 19
 }
 item {
-name: "MovRht"
-id: 20
+    name: "MovRht"
+    id: 20
 }
 item {
-name: "MovLft"
-id: 21
+    name: "MovLft"
+    id: 21
 }
 item {
-name: "Ovtak"
-id: 22
+    name: "Ovtak"
+    id: 22
 }
 item {
-name: "Wait2X"
-id: 23
+    name: "Wait2X"
+    id: 23
 }
 item {
-name: "XingFmLft"
-id: 24
+    name: "XingFmLft"
+    id: 24
 }
 item {
-name: "XingFmRht"
-id: 25
+    name: "XingFmRht"
+    id: 25
 }
 item {
-name: "Xing"
-id: 26
+    name: "Xing"
+    id: 26
 }
 item {
-name: "PushObj"
-id: 27
+    name: "PushObj"
+    id: 27
 }
 item {
-name: "VehLane"
-id: 28
+    name: "VehLane"
+    id: 28
 }
 item {
-name: "OutgoLane"
-id: 29
+    name: "OutgoLane"
+    id: 29
 }
 item {
-name: "OutgoCycLane"
-id: 30
+    name: "OutgoCycLane"
+    id: 30
 }
 item {
-name: "OutgoBusLane"
-id: 31
+    name: "OutgoBusLane"
+    id: 31
 }
 item {
-name: "IncomLane"
-id: 32
+    name: "IncomLane"
+    id: 32
 }
 item {
-name: "IncomCycLane"
-id: 33
+    name: "IncomCycLane"
+    id: 33
 }
 item {
-name: "IncomBusLane"
-id: 34
+    name: "IncomBusLane"
+    id: 34
 }
 item {
-name: "Pav"
-id: 35
+    name: "Pav"
+    id: 35
 }
 item {
-name: "LftPav"
-id: 36
+    name: "LftPav"
+    id: 36
 }
 item {
-name: "RhtPav"
-id: 37
+    name: "RhtPav"
+    id: 37
 }
 item {
-name: "Jun"
-id: 38
+    name: "Jun"
+    id: 38
 }
 item {
-name: "xing"
-id: 39
+    name: "xing"
+    id: 39
 }
 item {
-name: "BusStop"
-id: 40
+    name: "BusStop"
+    id: 40
 }
 item {
-name: "parking"
-id: 41
+    name: "parking"
+    id: 41
 }
 item {
-name: "LftParking"
-id: 42
+    name: "LftParking"
+    id: 42
 }
 item {
-name: "rightParking"
-id: 43
+    name: "rightParking"
+    id: 43
 }
