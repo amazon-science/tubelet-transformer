@@ -1,0 +1,116 @@
+DDP_CONFIG:
+  WORLD_SIZE: 1
+  WORLD_RANK: 0
+  GPU_WORLD_SIZE: 4
+  GPU_WORLD_RANK: 0
+  DIST_URL: 'tcp://161.73.173.217:23457'
+  WOLRD_URLS: ['161.73.173.217']
+  AUTO_RANK_MATCH: False
+  DIST_BACKEND: 'nccl'
+  GPU: 4
+  DISTRIBUTED: True
+
+CONFIG:
+  EVAL_ONLY: False
+  TWO_STREAM: False
+  USE_LFB: False
+  USE_LOCATION: False
+  TRAIN:
+    EPOCH_NUM: 20
+    BATCH_SIZE: 1
+    LR: 1e-4
+    MIN_LR: 1e-5
+    LR_BACKBONE: 1e-5
+    MOMENTUM: 0.9
+    W_DECAY: 1e-4
+    LR_POLICY: 'step'
+    USE_WARMUP: False
+    WARMUP_START_LR: 1e-5
+    WARMUP_EPOCHS: 4
+    LR_MILESTONE: [10, 15]
+    STEP: 0.1
+    OPTIMIZER:
+      NAME: SGD
+    AUX_LOSS: True
+
+  VAL:
+    BATCH_SIZE: 1
+    FREQ: 2
+
+
+  DATA:
+    DATASET: 'roadpp'
+    DATASET_NAME: 'ava'
+    TRAIN_SUBSETS: [train]
+    VAL_SUBSETS: [val]
+    SEQ_LEN: 12
+    MIN_SEQ_STEP: 1
+    MAX_SEQ_STEP: 1
+    DATA_ROOT: '../'
+    ANNO_ROOT: '../'
+    train_skip_step: 1
+    skip_step: 1
+
+    # DATASET_NAME: 'ava'
+    LABEL_PATH: 'datasets/roadpp_labels.pbtxt'
+    # ANNO_PATH: 'datasets/assets/ava_{}_v22.json'
+    # DATA_PATH: '/mnt/pluto-gamma/salman/ROAD/Datasets/ava_download/frames/{}/'
+    NUM_CLASSES: 43
+    MULTIGRID: False
+    IMG_SIZE: 680
+    IMG_RESHAPE_SIZE: 512
+    TEMP_LEN: 12
+    FRAME_RATE: 2
+
+
+  MODEL:
+    SINGLE_FRAME: True
+    BACKBONE_NAME: CSN-152
+    TEMPORAL_DS_STRATEGY: decode
+    LAST_STRIDE: False
+    GENERATE_LFB: False
+    NAME: 'ava_detr_9_224'
+    ENC_LAYERS: 6
+    DEC_LAYERS: 6
+    D_MODEL: 256
+    NHEAD: 8
+    NUM_ENCODER_LAYERS: 12
+    DIM_FEEDFORWARD: 2048
+    QUERY_NUM: 15
+    NORMALIZE_BEFORE: False
+    DROPOUT: 0.1
+    DS_RATE: 8
+    TEMP_LEN: 12
+    SAMPLE_RATE: 2
+    PRETRAINED: True
+    PRETRAIN_BACKBONE_DIR: "pretrained_weights/irCSN_152_ft_kinetics_from_ig65m_f126851907.mat"
+    PRETRAIN_TRANSFORMER_DIR: "pretrained_weights/detr.pth"
+    PRETRAINED_PATH: "pretrained_weights/_TubeR_CSN152_AVA22.pth"
+    LOAD: True
+    LOAD_FC: True
+
+  MATCHER:
+    COST_CLASS: 12
+    COST_BBOX: 5
+    COST_GIOU: 2
+    BNY_LOSS: True
+    BEFORE: False
+
+  LOSS_COFS:
+    MASK_COF: 1
+    DICE_COF: 12
+    BBOX_COF: 5
+    GIOU_COF: 2
+    EOS_COF: 0.1
+    WEIGHT: 10
+    WEIGHT_CHANGE: 1000
+    LOSS_CHANGE_COF: 2
+    CLIPS_MAX_NORM: 0.1
+
+  LOG:
+    BASE_PATH: 'cache_ROADpp/roadpp_Tuber'
+    LOG_DIR: 'tb_log'
+    SAVE_DIR: 'checkpoints'
+    EVAL_DIR: 'cache_ROADpp/roadpp_Tuber/eval'
+    SAVE_FREQ: 1
+    RES_DIR: 'tmp2'
