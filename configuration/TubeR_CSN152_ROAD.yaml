@@ -1,13 +1,13 @@
 DDP_CONFIG:
   WORLD_SIZE: 1
   WORLD_RANK: 0
-  GPU_WORLD_SIZE: 8
+  GPU_WORLD_SIZE: 4
   GPU_WORLD_RANK: 0
   DIST_URL: 'tcp://161.73.173.217:23457'
   WOLRD_URLS: ['161.73.173.217']
   AUTO_RANK_MATCH: False
   DIST_BACKEND: 'nccl'
-  GPU: 0
+  GPU: 4
   DISTRIBUTED: True
 
 CONFIG:
@@ -42,23 +42,23 @@ CONFIG:
     DATASET: 'road'
     DATASET_NAME: 'ava'
     TRAIN_SUBSETS: [train_3]
-    VAL_SUBSETS: [val_3]
+    VAL_SUBSETS: [train_3]
     SEQ_LEN: 12
     MIN_SEQ_STEP: 1
     MAX_SEQ_STEP: 1
-    DATA_ROOT: '/mnt/pluto-theta/salman/ROAD/Datasets/'
-    ANNO_ROOT: '/mnt/pluto-theta/salman/ROAD/Datasets/'
+    DATA_ROOT: '/mnt/pluto-gamma/salman/ROAD/Datasets/'
+    ANNO_ROOT: '/mnt/pluto-gamma/salman/ROAD/Datasets/'
     train_skip_step: 1
     skip_step: 1
 
     # DATASET_NAME: 'ava'
     LABEL_PATH: 'datasets/road_labels.pbtxt'
     # ANNO_PATH: 'datasets/assets/ava_{}_v22.json'
-    # DATA_PATH: '/mnt/pluto-theta/salman/ROAD/Datasets/ava_download/frames/{}/'
+    # DATA_PATH: '/mnt/pluto-gamma/salman/ROAD/Datasets/ava_download/frames/{}/'
     NUM_CLASSES: 41
     MULTIGRID: False
-    IMG_SIZE: 256
-    IMG_RESHAPE_SIZE: 288
+    IMG_SIZE: 680
+    IMG_RESHAPE_SIZE: 512
     TEMP_LEN: 12
     FRAME_RATE: 2
 
