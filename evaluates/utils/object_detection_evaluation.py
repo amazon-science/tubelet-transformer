@@ -132,9 +132,10 @@ class ObjectDetectionEvaluator(DetectionEvaluator):
         Raises:
             ValueError: If the category ids are not 1-indexed.
         """
+
         super(ObjectDetectionEvaluator, self).__init__(categories)
         self._num_classes = max([cat['id'] for cat in categories])
-
+        
 
         if min(cat['id'] for cat in categories) < 1:
             raise ValueError('Classes should be 1-indexed.')

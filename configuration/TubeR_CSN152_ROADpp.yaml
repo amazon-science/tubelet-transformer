@@ -3,8 +3,8 @@ DDP_CONFIG:
   WORLD_RANK: 0
   GPU_WORLD_SIZE: 4
   GPU_WORLD_RANK: 0
-  DIST_URL: 'tcp://161.73.173.217:23456'
-  WOLRD_URLS: ['161.73.173.217']
+  DIST_URL: 'tcp://161.73.173.213:23457'
+  WOLRD_URLS: ['161.73.173.213']
   AUTO_RANK_MATCH: False
   DIST_BACKEND: 'nccl'
   GPU: 4
@@ -37,17 +37,31 @@ CONFIG:
     BATCH_SIZE: 1
     FREQ: 2
 
+
   DATA:
+    DATASET: 'roadpp'
     DATASET_NAME: 'ava'
-    LABEL_PATH: 'datasets/assets/ava_action_list_v2.1_for_activitynet_2018.pbtxt'
-    ANNO_PATH: 'datasets/assets/ava_{}_v22.json'
-    DATA_PATH: '/mnt/pluto-theta/salman/ROAD/Datasets/ava_download/frames/{}/'
-    NUM_CLASSES: 80
+    TRAIN_SUBSETS: [train]
+    VAL_SUBSETS: [val]
+    SEQ_LEN: 10
+    MIN_SEQ_STEP: 1
+    MAX_SEQ_STEP: 1
+    DATA_ROOT: '../'
+    ANNO_ROOT: '../'
+    train_skip_step: 1
+    skip_step: 1
+
+    # DATASET_NAME: 'ava'
+    LABEL_PATH: 'datasets/roadpp.pbtxt'
+    # ANNO_PATH: 'datasets/assets/ava_{}_v22.json'
+    # DATA_PATH: '/mnt/pluto-gamma/salman/ROAD/Datasets/ava_download/frames/{}/'
+    NUM_CLASSES: 43
     MULTIGRID: False
-    IMG_SIZE: 256
-    IMG_RESHAPE_SIZE: 288
-    TEMP_LEN: 32
-    FRAME_RATE: 2
+    IMG_SIZE: 680
+    IMG_RESHAPE_SIZE: 512
+    TEMP_LEN: 10
+    FRAME_RATE: 10
+
 
   MODEL:
     SINGLE_FRAME: True
@@ -66,12 +80,13 @@ CONFIG:
     NORMALIZE_BEFORE: False
     DROPOUT: 0.1
     DS_RATE: 8
-    TEMP_LEN: 32
+    TEMP_LEN: 12
     SAMPLE_RATE: 2
-    PRETRAINED: False
+    PRETRAINED: True
     PRETRAIN_BACKBONE_DIR: "pretrained_weights/irCSN_152_ft_kinetics_from_ig65m_f126851907.mat"
     PRETRAIN_TRANSFORMER_DIR: "pretrained_weights/detr.pth"
-    PRETRAINED_PATH: "pretrained_weights/ADTR_CSN_152_decode_ava_22.pth"
+    PRETRAINED_PATH: "-.pth"
+    # PRETRAINED_PATH: "cache_ROADpp/roadpp_Tuber/2023-04-08-23-36-21/checkpoints/ckpt_epoch_6.pth"
     LOAD: True
     LOAD_FC: True
 
@@ -94,9 +109,9 @@ CONFIG:
     CLIPS_MAX_NORM: 0.1
 
   LOG:
-    BASE_PATH: 'cache/AVA_Tuber'
+    BASE_PATH: 'cache_ROADpp/roadpp_Tuber'
     LOG_DIR: 'tb_log'
     SAVE_DIR: 'checkpoints'
-    EVAL_DIR: 'cache/AVA_Tuber/eval'
+    EVAL_DIR: 'cache_ROADpp/roadpp_Tuber/eval'
     SAVE_FREQ: 1
     RES_DIR: 'tmp2'

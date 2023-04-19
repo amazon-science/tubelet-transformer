@@ -71,6 +71,12 @@ class VideoDataset(data.Dataset):
         imgs = torch.stack(imgs, dim=0)
         imgs = imgs.permute(1, 0, 2, 3)
 
+        print('img',imgs.shape)
+        print('tar',target)
+        print('tar shape',target.shape)
+        print(rr)
+        
+
         return imgs, target
 
     def load_annotation(self, sample_id, video_frame_list):
@@ -131,7 +137,7 @@ class VideoDataset(data.Dataset):
         return target
 
     def loadvideo(self, start_img, vid, frame_key):
-        video_frame_path = self.frame_path
+        video_frame_path = self.frame_path.format(vid)
         video_frame_list = sorted(glob(video_frame_path + '/*.jpg'))
 
         if len(video_frame_list) == 0:
